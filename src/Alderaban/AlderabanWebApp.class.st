@@ -17,16 +17,24 @@ AlderabanWebApp class >> appClasses [
 ]
 
 { #category : #'initialize-release' }
+AlderabanWebApp >> cardRoot [
+
+	| cardRoot |
+	cardRoot := self elementAt: #'card-root'.
+	^ cardRoot
+]
+
+{ #category : #'initialize-release' }
 AlderabanWebApp >> initialize [
 
 	super initialize.
 	character := AlderabanCharacter new.
 	questions := AlderabanQuestion allQuestionsOn: character.
-	(self elementAt: #root) addEventListener: #responseSubmitted block: [:event | self responseSubmitted ].
-	(self elementAt: #root)
+	self cardRoot addEventListener: #responseSubmitted block: [:event | self responseSubmitted ].
+	self cardRoot
 		addEventListener: #nextQuestion
 		block: [ self renderNextQuestion ].
-	(self elementAt: #root) dispatchEvent:
+	self cardRoot dispatchEvent:
 		(self newEvent: 'nextQuestion')
 ]
 
@@ -42,7 +50,7 @@ AlderabanWebApp >> newEvent: eventName [
 { #category : #'initialize-release' }
 AlderabanWebApp >> renderNextQuestion [
 
-	self root innerHTML: ''.
+	self cardRoot innerHTML: ''.
 	questions ifEmpty: [ ^ self renderPerso ].
 	currentQuestion := questions removeFirst.
 	self renderQuestion: currentQuestion
@@ -51,12 +59,14 @@ AlderabanWebApp >> renderNextQuestion [
 { #category : #'initialize-release' }
 AlderabanWebApp >> renderPerso [
 
-	| p ul |
-	p := self addElement: 'p' to: self root.
+	| p ul card |
+	card := self addElement: 'div' to: self cardRoot.
+	self cssClassesElement: card set: { 'card-body' }.
+	p := self addElement: 'p' to: card.
 	p innerHTML: 'Ton personnage est de la race: ' , character raceName.
-	p := self addElement: 'p' to: self root.
+	p := self addElement: 'p' to: card.
 	p innerHTML: 'Test stats sont:'.
-	ul := self addElement: 'ul' to: self root.
+	ul := self addElement: 'ul' to: card.
 	character stats keysAndValuesDo: [ :key :value | 
 		| li |
 		li := self addElement: 'li' to: ul.
@@ -66,22 +76,29 @@ AlderabanWebApp >> renderPerso [
 { #category : #'initialize-release' }
 AlderabanWebApp >> renderQuestion: aQuestion [
 
-	| submit root p responses |
-	root := self root.
-	p := self addElement: 'p' to: root.
+	| submit p responses card |
+
+	aQuestion imageUrl ifNotNil: [ 
+		| img |
+		img := self addElement: 'img' to: self cardRoot.
+		self attribute: 'src' ofElement: img set: aQuestion imageUrl.
+		self cssClassesElement: img set: #( 'card-img-top' ) ].
+	card := self addElement: 'div' to: self cardRoot.
+	self cssClassesElement: card set: { 'card-body' }.
+	p := self addElement: 'p' to: card.
 	p innerHTML: aQuestion prompt.
 	responses := aQuestion responses.
-	self renderResponses: responses forQuestion: aQuestion inForm: root.
-	submit := self addElement: 'input' to: root.
+	self renderResponses: responses forQuestion: aQuestion inForm: card.
+	submit := self addElement: 'input' to: card.
 	self
 		cssClassesElement: submit
 		set: #( 'btn' 'btn-primary' 'disabled' ).
-	(self elementAt: #root)
+	self cardRoot
 		addEventListener: #responseSelected
 		block: [ self cssClassesRemoveAll: #( 'disabled' ) element: submit ].
 	self attribute: 'type' ofElement: submit set: 'submit'.
 	self onClickElement: submit do: [ 
-		(self elementAt: #root) dispatchEvent:
+		self cardRoot dispatchEvent:
 			(self newEvent: 'responseSubmitted') ]
 ]
 
@@ -100,7 +117,7 @@ AlderabanWebApp >> renderResponses: responses forQuestion: aQuestion inForm: for
 		self
 			onChangeElement: input
 			do: [ 
-			self root dispatchEvent: (self newEvent: 'responseSelected') ].
+			self cardRoot dispatchEvent: (self newEvent: 'responseSelected') ].
 		label := self addElement: 'label' to: div.
 		self cssClassesElement: label set: { 'form-check-label' }.
 
@@ -114,14 +131,6 @@ AlderabanWebApp >> responseSubmitted [
 	selectedResponse := currentQuestion responses at:
 		                    (document querySelector: 'input:checked') value.
 	character := selectedResponse applyOn: character. 
-	(self elementAt: #root) dispatchEvent:
+	self cardRoot dispatchEvent:
 		(self newEvent: 'nextQuestion')
-]
-
-{ #category : #'initialize-release' }
-AlderabanWebApp >> root [
-
-	| root |
-	root := self elementAt: #root.
-	^ root
 ]

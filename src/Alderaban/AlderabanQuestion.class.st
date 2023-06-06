@@ -3,7 +3,8 @@ Class {
 	#superclass : #Object,
 	#instVars : [
 		'prompt',
-		'responses'
+		'responses',
+		'imageUrl'
 	],
 	#category : #Alderaban
 }
@@ -93,8 +94,9 @@ AlderabanQuestion class >> questionDeRace [
 AlderabanQuestion class >> questionRandom [
 
 	^ self new
+		  imageUrl: './computer.jpeg';
 		  prompt:
-			  'Do play they miss give so up. Words to up style of since world. We leaf to snug on no need. Way own uncommonly travelling now acceptance bed compliment solicitude. Dissimilar admiration so terminated no in contrasted it. Advantages entreaties mr he apartments do. Limits far yet turned highly repair parish talked six. Draw fond rank form nor the day eat.';
+			  'Vous êtes face à un ordinateur vétuste affichant un compte à rebours au bout duquel une bombe explosera et vous avec. Quelle est votre réaction :';
 		  responses: { 
 				  (AlderabanResponse new
 					   text:
@@ -115,6 +117,7 @@ AlderabanQuestion class >> questionRandom [
 AlderabanQuestion class >> questionVagabon [
 
 	^ self new
+		  imageUrl: './barbus.jpeg';
 		  prompt:
 			  'Vous êtes pris à partie par un groupe de vagabonds des plaines, quelle est votre réaction ?';
 		  responses: { 
@@ -150,6 +153,18 @@ AlderabanQuestion class >> questionVagabon [
 					   stats: { (#INTELLIGENCE -> 10) } asDictionary;
 					   yourself) };
 		  yourself
+]
+
+{ #category : #accessing }
+AlderabanQuestion >> imageUrl [
+
+	^ imageUrl
+]
+
+{ #category : #accessing }
+AlderabanQuestion >> imageUrl: anObject [
+
+	imageUrl := anObject
 ]
 
 { #category : #accessing }
