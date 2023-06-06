@@ -11,13 +11,55 @@ Class {
 
 { #category : #'as yet unclassified' }
 AlderabanQuestion class >> allQuestionsOn: anInteger [ 
-	^ { self questionDeRace. self questionVagabon. self questionRandom } asOrderedCollection
+	^ { self questionDeRace. self questionVagabon. self questionComputer } asOrderedCollection
+]
+
+{ #category : #'as yet unclassified' }
+AlderabanQuestion class >> questionComputer [
+
+	^ self new
+		  imageUrl: './computer.jpeg';
+		  prompt:
+			  'Vous êtes face à un ordinateur vétuste affichant un compte à rebours au bout duquel une bombe explosera et vous avec. Quelle est votre réaction :';
+		  responses: { 
+				  (AlderabanResponse new
+					   text:
+						   'Vous vous saisissez du micro intercom et prononcez distinctement ces quelques mots : "ORDINATEUR ! JE T''ORDONNE DE METTRE FIN À TA MORTELLE ENTREPRISE SUR LE CHAMP!"';
+					   stats: { (#FORCE -> 10) } asDictionary;
+					   yourself).
+				  (AlderabanResponse new
+					   text:
+						   'Vous avez foi en votre immunité aux radiations et vous attendez patiemment la fin du compte à rebours. Après tout, l''explosion tuera vos ennemis.';
+					   stats: { (#PERCEPTION -> 10) } asDictionary;
+					   yourself).
+				  (AlderabanResponse new
+					   text:
+						   'Vous ouvrez délicatement le capot latéral de l’ordinateur et constatez au travers l’amas de fil et connecteurs la présence d'' un gros fil rouge. Vous avez vu assez de films des années 90 pour savoir que c’est celui-là qu''il faut couper. Passant vos doigts aux travers des senseurs et détecteurs vous parvenez à le sectionner sans mal arrêtant par la même la minuterie.';
+					   stats: { (#CHARISME -> 10) } asDictionary;
+					   yourself).
+				  (AlderabanResponse new
+					   text:
+						   'Vous observez attentivement le terminal, quelque chose cloche . Vous observez encore plus attentivement Ainsi que la pièce qui vous entoure . Vous réalisez que vous êtes dans une cuisine et non dans un bunker militaire et que dans 4 minutes il faudra égoutter les pâtes.';
+					   stats: { (#CHARISME -> 10) } asDictionary;
+					   yourself).
+				  (AlderabanResponse new
+					   text:
+						   'Vous vous mettez a tapper frénétiquement sur le clavier du terminal. Après deux minute de code sur cette antiquité vous réussissez à transformer le programme de lancement de missile en clone de space invader.';
+					   stats: { (#RESISTANCE -> 10) } asDictionary;
+					   yourself).
+				  (AlderabanResponse new
+					   text:
+						   'Vous agrippez le terminal avant de le projeter violemment sur le mur en face, le faisant par la même, exploser en milles petits morceaux électroniques. Ce n''est pas un écran qui va vous dicter votre conduite.';
+					   stats: { (#INTELLIGENCE -> 10) } asDictionary;
+					   yourself) };
+		  yourself
 ]
 
 { #category : #'as yet unclassified' }
 AlderabanQuestion class >> questionDeRace [
 
 	^ self new
+		  imageUrl: './races.png';
 		  prompt: 'Veuillez sélectionner une race pour votre personnage';
 		  responses: { 
 				  (ReponseTypeRace new
@@ -86,29 +128,6 @@ AlderabanQuestion class >> questionDeRace [
 							   (#DEXTÉRITÉ -> 0).
 							   (#PERCEPTION -> 0).
 							   (#CHARISME -> 0) } asDictionary;
-					   yourself) };
-		  yourself
-]
-
-{ #category : #'as yet unclassified' }
-AlderabanQuestion class >> questionRandom [
-
-	^ self new
-		  imageUrl: './computer.jpeg';
-		  prompt:
-			  'Vous êtes face à un ordinateur vétuste affichant un compte à rebours au bout duquel une bombe explosera et vous avec. Quelle est votre réaction :';
-		  responses: { 
-				  (AlderabanResponse new
-					   text:
-						   'In on announcing if of comparison pianoforte projection.';
-					   yourself).
-				  (AlderabanResponse new
-					   text:
-						   'Although moreover mistaken kindness me feelings do be marianne.';
-					   yourself).
-				  (AlderabanResponse new
-					   text:
-						   'Is allowance instantly strangers applauded discourse so.';
 					   yourself) };
 		  yourself
 ]

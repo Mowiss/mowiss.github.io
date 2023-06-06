@@ -51,8 +51,10 @@ AlderabanWebApp >> newEvent: eventName [
 AlderabanWebApp >> renderNextQuestion [
 
 	self cardRoot innerHTML: ''.
+	window scrollTo:(0@0).
 	questions ifEmpty: [ ^ self renderPerso ].
 	currentQuestion := questions removeFirst.
+
 	self renderQuestion: currentQuestion
 ]
 
