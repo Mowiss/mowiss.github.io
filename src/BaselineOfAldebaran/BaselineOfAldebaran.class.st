@@ -1,15 +1,15 @@
 Class {
-	#name : #BaselineOfAlderaban,
+	#name : #BaselineOfAldebaran,
 	#superclass : #BaselineOf,
-	#category : #BaselineOfAlderaban
+	#category : #BaselineOfAldebaran
 }
 
 { #category : #baselines }
-BaselineOfAlderaban >> baseline: spec [
+BaselineOfAldebaran >> baseline: spec [
 <baseline>
 	spec for: #common do: [ 
 		spec
 			baseline: 'PharoJS'
 			with: [ spec repository: 'github://PharoJS/PharoJS:pharo10' ].
-		spec package: #Alderaban ]
+		spec package: #Aldebaran ]
 ]

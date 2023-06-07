@@ -1,33 +1,33 @@
 Class {
-	#name : #AlderabanCharacter,
+	#name : #AldebaranCharacter,
 	#superclass : #Object,
 	#instVars : [
 		'raceName',
 		'stats'
 	],
-	#category : #Alderaban
+	#category : #Aldebaran
 }
 
 { #category : #accessing }
-AlderabanCharacter >> raceName [
+AldebaranCharacter >> raceName [
 
 	^ raceName
 ]
 
 { #category : #accessing }
-AlderabanCharacter >> raceName: anObject [
+AldebaranCharacter >> raceName: anObject [
 
 	raceName := anObject
 ]
 
 { #category : #accessing }
-AlderabanCharacter >> stats [
+AldebaranCharacter >> stats [
 
 	^ stats
 ]
 
 { #category : #accessing }
-AlderabanCharacter >> stats: anObject [
+AldebaranCharacter >> stats: anObject [
 
 	stats := anObject
 ]

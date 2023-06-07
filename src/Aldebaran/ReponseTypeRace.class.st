@@ -1,10 +1,10 @@
 Class {
 	#name : #ReponseTypeRace,
-	#superclass : #AlderabanResponse,
+	#superclass : #AldebaranResponse,
 	#instVars : [
 		'raceName'
 	],
-	#category : #Alderaban
+	#category : #Aldebaran
 }
 
 { #category : #applying }

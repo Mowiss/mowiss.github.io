@@ -1,5 +1,5 @@
 Class {
-	#name : #AlderabanWebApp,
+	#name : #AldebaranWebApp,
 	#superclass : #PjFileBasedWebApp,
 	#instVars : [
 		'character',
@@ -7,17 +7,17 @@ Class {
 		'announcer',
 		'currentQuestion'
 	],
-	#category : #Alderaban
+	#category : #Aldebaran
 }
 
 { #category : #description }
-AlderabanWebApp class >> appClasses [
+AldebaranWebApp class >> appClasses [
 	<pharoJsSkip>
-	^super appClasses, {AlderabanCharacter}
+	^super appClasses, {AldebaranCharacter}
 ]
 
 { #category : #'initialize-release' }
-AlderabanWebApp >> cardRoot [
+AldebaranWebApp >> cardRoot [
 
 	| cardRoot |
 	cardRoot := self elementAt: #'card-root'.
@@ -25,11 +25,11 @@ AlderabanWebApp >> cardRoot [
 ]
 
 { #category : #'initialize-release' }
-AlderabanWebApp >> initialize [
+AldebaranWebApp >> initialize [
 
 	super initialize.
-	character := AlderabanCharacter new.
-	questions := AlderabanQuestion allQuestionsOn: character.
+	character := AldebaranCharacter new.
+	questions := AldebaranQuestion allQuestionsOn: character.
 	"<link rel=""preload"" as=""image"" href=""map.png"" media=""(max-width: 600px)"">"
 	questions do: [ :aQuestion | self preloadImage: aQuestion ].
 
@@ -43,7 +43,7 @@ AlderabanWebApp >> initialize [
 ]
 
 { #category : #'initialize-release' }
-AlderabanWebApp >> newEvent: eventName [
+AldebaranWebApp >> newEvent: eventName [
 
 	| event |
 	event := document createEvent: #CustomEvent.
@@ -52,7 +52,7 @@ AlderabanWebApp >> newEvent: eventName [
 ]
 
 { #category : #'initialize-release' }
-AlderabanWebApp >> preloadImage: aQuestion [
+AldebaranWebApp >> preloadImage: aQuestion [
 
 	| link |
 	aQuestion imageUrl ifNil: [ ^ self ].
@@ -64,7 +64,7 @@ AlderabanWebApp >> preloadImage: aQuestion [
 ]
 
 { #category : #'initialize-release' }
-AlderabanWebApp >> renderNextQuestion [
+AldebaranWebApp >> renderNextQuestion [
 
 	self cardRoot innerHTML: ''.
 	window scrollTo:(0@0).
@@ -75,7 +75,7 @@ AlderabanWebApp >> renderNextQuestion [
 ]
 
 { #category : #'initialize-release' }
-AlderabanWebApp >> renderPerso [
+AldebaranWebApp >> renderPerso [
 
 	| p ul card title stats |
 	
@@ -101,7 +101,7 @@ AlderabanWebApp >> renderPerso [
 ]
 
 { #category : #'initialize-release' }
-AlderabanWebApp >> renderQuestion: aQuestion [
+AldebaranWebApp >> renderQuestion: aQuestion [
 
 	| submit p responses card |
 
@@ -130,7 +130,7 @@ AlderabanWebApp >> renderQuestion: aQuestion [
 ]
 
 { #category : #'initialize-release' }
-AlderabanWebApp >> renderResponses: responses forQuestion: aQuestion inForm: form [
+AldebaranWebApp >> renderResponses: responses forQuestion: aQuestion inForm: form [
 
 	responses keysAndValuesDo: [ :key :aResponse | 
 		| input label div |
@@ -152,7 +152,7 @@ AlderabanWebApp >> renderResponses: responses forQuestion: aQuestion inForm: for
 ]
 
 { #category : #'initialize-release' }
-AlderabanWebApp >> responseSubmitted [
+AldebaranWebApp >> responseSubmitted [
 
 	| selectedResponse |
 	selectedResponse := currentQuestion responses at:

@@ -1,15 +1,15 @@
 Class {
-	#name : #AlderabanResponse,
+	#name : #AldebaranResponse,
 	#superclass : #Object,
 	#instVars : [
 		'text',
 		'stats'
 	],
-	#category : #Alderaban
+	#category : #Aldebaran
 }
 
 { #category : #accessing }
-AlderabanResponse >> applyOn: aCharacter [
+AldebaranResponse >> applyOn: aCharacter [
 
 	stats keysAndValuesDo: [ :key :value | 
 		aCharacter stats at: key put: (aCharacter stats at: key) + value ].
@@ -17,31 +17,31 @@ AlderabanResponse >> applyOn: aCharacter [
 ]
 
 { #category : #accessing }
-AlderabanResponse >> initialize [ 
+AldebaranResponse >> initialize [ 
 	super initialize.
 	stats := Dictionary new.
 ]
 
 { #category : #accessing }
-AlderabanResponse >> stats [
+AldebaranResponse >> stats [
 
 	^ stats
 ]
 
 { #category : #accessing }
-AlderabanResponse >> stats: anObject [
+AldebaranResponse >> stats: anObject [
 
 	stats := anObject
 ]
 
 { #category : #accessing }
-AlderabanResponse >> text [
+AldebaranResponse >> text [
 
 	^ text
 ]
 
 { #category : #accessing }
-AlderabanResponse >> text: anObject [
+AldebaranResponse >> text: anObject [
 
 	text := anObject
 ]
