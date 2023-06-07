@@ -30,12 +30,16 @@ AlderabanWebApp >> initialize [
 	super initialize.
 	character := AlderabanCharacter new.
 	questions := AlderabanQuestion allQuestionsOn: character.
-	self cardRoot addEventListener: #responseSubmitted block: [:event | self responseSubmitted ].
+	"<link rel=""preload"" as=""image"" href=""map.png"" media=""(max-width: 600px)"">"
+	questions do: [ :aQuestion | self preloadImage: aQuestion ].
+
+	self cardRoot
+		addEventListener: #responseSubmitted
+		block: [ :event | self responseSubmitted ].
 	self cardRoot
 		addEventListener: #nextQuestion
 		block: [ self renderNextQuestion ].
-	self cardRoot dispatchEvent:
-		(self newEvent: 'nextQuestion')
+	self cardRoot dispatchEvent: (self newEvent: 'nextQuestion')
 ]
 
 { #category : #'initialize-release' }
@@ -45,6 +49,18 @@ AlderabanWebApp >> newEvent: eventName [
 	event := document createEvent: #CustomEvent.
 	event initEvent: eventName with: nil.
 	^ event
+]
+
+{ #category : #'initialize-release' }
+AlderabanWebApp >> preloadImage: aQuestion [
+
+	| link |
+	aQuestion imageUrl ifNil: [ ^ self ].
+	link := self addElement: 'link' to: document head.
+	self attribute: 'href' ofElement: link set: aQuestion imageUrl.
+	self attribute: 'as' ofElement: link set: 'image'.
+	self attribute: 'rel' ofElement: link set: 'preload'.
+	^ self
 ]
 
 { #category : #'initialize-release' }
