@@ -29,7 +29,7 @@ AldebaranWebApp >> initialize [
 
 	super initialize.
 	character := AldebaranCharacter new.
-	questions := AldebaranQuestion allQuestionsOn: character.
+	questions := AldebaranQuestion allQuestions.
 	"<link rel=""preload"" as=""image"" href=""map.png"" media=""(max-width: 600px)"">"
 	questions do: [ :aQuestion | self preloadImage: aQuestion ].
 

@@ -10,7 +10,7 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-AldebaranQuestion class >> allQuestionsOn: anInteger [
+AldebaranQuestion class >> allQuestions [
 
 	^ { 
 		  self questionDeRace.
@@ -306,6 +306,13 @@ AldebaranQuestion class >> questionVagabon [
 		  yourself
 ]
 
+{ #category : #'as yet unclassified' }
+AldebaranQuestion class >> questions: collection [
+	<pharoJsSkip>
+	^ self class compile: 'allQuestions 
+	^ PhxJsonReader readFromString: ''', ((collection asPhxJsonString) copyReplaceAll: '''' with: ''''''), ''''
+]
+
 { #category : #accessing }
 AldebaranQuestion >> imageUrl [
 
@@ -333,11 +340,11 @@ AldebaranQuestion >> prompt: anObject [
 { #category : #accessing }
 AldebaranQuestion >> responses [
 
-	^ responses
+	^ (responses collect: [ :i | i hash -> i ]) asDictionary
 ]
 
 { #category : #accessing }
 AldebaranQuestion >> responses: aCollection [
 
-	responses := (aCollection collect: [ :i | i hash -> i ]) asDictionary
+	responses := aCollection
 ]
