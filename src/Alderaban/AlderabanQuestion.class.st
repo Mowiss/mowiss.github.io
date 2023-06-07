@@ -10,8 +10,57 @@ Class {
 }
 
 { #category : #'as yet unclassified' }
-AlderabanQuestion class >> allQuestionsOn: anInteger [ 
-	^ { self questionDeRace. self questionVagabon. self questionComputer. self questionFruit} asOrderedCollection
+AlderabanQuestion class >> allQuestionsOn: anInteger [
+
+	^ { 
+		  self questionDeRace.
+		  self questionVagabon.
+		  self questionComputer.
+		  self questionFruit.
+		  self questionBar.
+		  self questionScorpion } asOrderedCollection
+]
+
+{ #category : #'as yet unclassified' }
+AlderabanQuestion class >> questionBar [
+
+	^ self new
+		  imageUrl: './bar.jpeg';
+		  prompt:
+			  'Cela fait maintenant plusieurs heures que vous êtes dans ce bar avec ce cyborg, Il va bientôt falloir payer l''addition mais vous n''avez pas une bastos en poche.';
+		  responses: { 
+				  (AlderabanResponse new
+					   text:
+						   'Après avoir terminé votre verre, vous regardez le cyborg dans les yeux et lui annoncez que vous êtes raide dingue de lui et que s'' il daigne bien payer l''addition vous serez enclin à vous laissez raccompagner chez vous.';
+					   stats: { (#FORCE -> 10) } asDictionary;
+					   yourself).
+				  (AlderabanResponse new
+					   text:
+						   'Vous proposez au cyborg un jeu à boire afin de définir qui paiera l''addition. Vous avez parfaitement confiance en la capacité de votre foi à métaboliser les toxines.';
+					   stats: { (#PERCEPTION -> 10) } asDictionary;
+					   yourself).
+				  (AlderabanResponse new
+					   text:
+						   'vous posez votre main sur la tête du cyborg et la fracasser violemment sur la table. Après qu’il ai perdu connaissance, vous vous servez dans sa bourse à bastos pour régler l''apéro.';
+					   stats: { (#INTELLIGENCE -> 10) } asDictionary;
+					   yourself).
+
+				  (AlderabanResponse new
+					   text:
+						   'Vous subtiliser discrètement la bourse de la personne assise derrière vous pour régler .';
+					   stats: { (#CHARISME -> 10) } asDictionary;
+					   yourself).
+				  (AlderabanResponse new
+					   text:
+						   'Votre partenaire de beuverie vous explique qu''il à oublié son portefeuille au toilette. Mais on ne vous la fait pas à vous, vous lui plantez un couteau de chasse dans la main, transperçant la table. Vous profitez alors de son immobilité pour lui faire les poches et régler l''addition.';
+					   stats: { (#RESISTANCE -> 10) } asDictionary;
+					   yourself).
+				  (AlderabanResponse new
+					   text:
+						   'Vous feignez d''aller aux toilettes et profitez du calme de la petite pièce pour ouvrir un portail donnant sur la ruelle, en sortant vous apercevez les videurs passer à tabac le cyborg qui ne pouvait pas régler.';
+					   stats: { (#INTELLIGENCE -> 10) } asDictionary;
+					   yourself) };
+		  yourself
 ]
 
 { #category : #'as yet unclassified' }
@@ -168,6 +217,48 @@ AlderabanQuestion class >> questionFruit [
 				  (AlderabanResponse new
 					   text:
 						   'Vous ensorcelez le vendeur qui en plus de vous raccompagner jusqu''à la sortie en vous offrant le pack de cellule, fait un détour par le coffre et vous laisse vous servir en bastos.';
+					   stats: { (#INTELLIGENCE -> 10) } asDictionary;
+					   yourself) };
+		  yourself
+]
+
+{ #category : #'as yet unclassified' }
+AlderabanQuestion class >> questionScorpion [
+
+	^ self new
+		  imageUrl: './scorpion.jpeg';
+		  prompt:
+			  'Oh non ! Un Turbo Scorpion du désert de sel vous attaque ! quelle sera votre réaction ?';
+		  responses: { 
+				  (AlderabanResponse new
+					   text:
+						   'Vous gonflez votre poitrine pour vous rendre le plus impressionnant possible , agitant les bras et criant en sautillant pour tenter de lui faire peur.';
+					   stats: { (#FORCE -> 10) } asDictionary;
+					   yourself).
+				  (AlderabanResponse new
+					   text:
+						   'Vous vous laissez délibérément piquer pour être à distance et lui trancher les pattes à l''aide de votre machette laser.';
+					   stats: { (#PERCEPTION -> 10) } asDictionary;
+					   yourself).
+				  (AlderabanResponse new
+					   text:
+						   'Un Insecte ?! vous ne le laissez pas réagir et commencer à le marteler de coups de poing jusqu''à ce qu''il soit parfaitement plat.';
+					   stats: { (#INTELLIGENCE -> 10) } asDictionary;
+					   yourself).
+
+				  (AlderabanResponse new
+					   text:
+						   'vous lui tournez autour rapidement esquivant chacune de ses tentatives de vous planter son dard empoisonné pour finalement trancher son alimentation principale d''un geste rapide et précis.';
+					   stats: { (#CHARISME -> 10) } asDictionary;
+					   yourself).
+				  (AlderabanResponse new
+					   text:
+						   'En le scrutant attentivement vous remarquez que son voyant de batterie indique qu''il est bientôt HS. Il est actuellement en charge solaire et n''attaquera pas, vous en profitez pour vous éclipser.';
+					   stats: { (#RESISTANCE -> 10) } asDictionary;
+					   yourself).
+				  (AlderabanResponse new
+					   text:
+						   'Vous connaissez pertinemment ce modèle de robot chasseur du désert et savez que son protocole n''est programmé que pour la destruction de vermine . Vous pouvez donc passer votre chemin';
 					   stats: { (#INTELLIGENCE -> 10) } asDictionary;
 					   yourself) };
 		  yourself
