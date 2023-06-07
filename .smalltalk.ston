@@ -1,7 +1,7 @@
 SmalltalkCISpec {
   #loading : [
     SCIMetacelloLoadSpec {
-      #baseline : 'Alderaban',
+      #baseline : 'Aldebaran',
       #directory : 'src',
       #platforms : [ #pharo ]
     }
