@@ -1,2 +1,2 @@
-AlderabanWebApp appFolder: './HTML/Alderaban/AlderabanWebApp/' asFileLocatorOrReference.
-AlderabanWebApp exportApp
+AldebaranWebApp appFolder: './HTML/Aldebaran/AldebaranWebApp/' asFileLocatorOrReference.
+AldebaranWebApp exportApp
