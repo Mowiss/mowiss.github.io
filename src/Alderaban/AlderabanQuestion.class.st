@@ -11,7 +11,7 @@ Class {
 
 { #category : #'as yet unclassified' }
 AlderabanQuestion class >> allQuestionsOn: anInteger [ 
-	^ { self questionDeRace. self questionVagabon. self questionComputer } asOrderedCollection
+	^ { self questionDeRace. self questionVagabon. self questionComputer. self questionFruit} asOrderedCollection
 ]
 
 { #category : #'as yet unclassified' }
@@ -69,7 +69,7 @@ AlderabanQuestion class >> questionDeRace [
 							   (#RESISTANCE -> 0).
 							   (#FORCE -> 0).
 							   (#INTELLIGENCE -> 0).
-							   (#DEXTÉRITÉ -> 0).
+							   (#DEXTÉRITÉ -> 15).
 							   (#PERCEPTION -> 0).
 							   (#CHARISME -> 0) } asDictionary;
 					   yourself).
@@ -77,7 +77,7 @@ AlderabanQuestion class >> questionDeRace [
 					   raceName: 'Droïde';
 					   text: 'Un droïde';
 					   stats: { 
-							   (#RESISTANCE -> 0).
+							   (#RESISTANCE -> 15).
 							   (#FORCE -> 0).
 							   (#INTELLIGENCE -> 0).
 							   (#DEXTÉRITÉ -> 0).
@@ -89,7 +89,7 @@ AlderabanQuestion class >> questionDeRace [
 					   text: 'Un troll';
 					   stats: { 
 							   (#RESISTANCE -> 0).
-							   (#FORCE -> 0).
+							   (#FORCE -> 15).
 							   (#INTELLIGENCE -> 0).
 							   (#DEXTÉRITÉ -> 0).
 							   (#PERCEPTION -> 0).
@@ -104,7 +104,7 @@ AlderabanQuestion class >> questionDeRace [
 							   (#FORCE -> 0).
 							   (#INTELLIGENCE -> 0).
 							   (#DEXTÉRITÉ -> 0).
-							   (#PERCEPTION -> 0).
+							   (#PERCEPTION -> 15).
 							   (#CHARISME -> 0) } asDictionary;
 					   yourself).
 				  (ReponseTypeRace new
@@ -113,7 +113,7 @@ AlderabanQuestion class >> questionDeRace [
 					   stats: { 
 							   (#RESISTANCE -> 0).
 							   (#FORCE -> 0).
-							   (#INTELLIGENCE -> 0).
+							   (#INTELLIGENCE -> 15).
 							   (#DEXTÉRITÉ -> 0).
 							   (#PERCEPTION -> 0).
 							   (#CHARISME -> 0) } asDictionary;
@@ -127,7 +127,48 @@ AlderabanQuestion class >> questionDeRace [
 							   (#INTELLIGENCE -> 0).
 							   (#DEXTÉRITÉ -> 0).
 							   (#PERCEPTION -> 0).
-							   (#CHARISME -> 0) } asDictionary;
+							   (#CHARISME -> 15) } asDictionary;
+					   yourself) };
+		  yourself
+]
+
+{ #category : #'as yet unclassified' }
+AlderabanQuestion class >> questionFruit [
+
+	^ self new
+		  imageUrl: './fruits.jpeg';
+		  prompt:
+			  'Le Mini Market de Cité 017 pratique des prix exorbitants, mais il vous faut absolument ce pack de cellule à fusion, vous attrapez alors le vendeur et …';
+		  responses: { 
+				  (AlderabanResponse new
+					   text:
+						   'Vous lui assurez que vous êtes le nouveau PDG du groupe MiniMarket© et qu''étant actionnaire du groupe vous pouvez vous servir dans les rayons au prorata de ses dividendes annuels."';
+					   stats: { (#FORCE -> 10) } asDictionary;
+					   yourself).
+				  (AlderabanResponse new
+					   text:
+						   'Vous regardez le vendeur dans les yeux, sans cligner une seule fois, Celui-ci fait de même. une heure plus tard la sueurs perles sur vos front, mais vous ne lâchez rien et finissez par gagner le combat de regard . Vous partez fièrement avec votre trophée.';
+					   stats: { (#PERCEPTION -> 10) } asDictionary;
+					   yourself).
+				  (AlderabanResponse new
+					   text:
+						   'Vous arrachez le bras droit du vendeur, lui précisant qu''avec les prix qu''il pratique il aurait largement de quoi se payer une prothèse cybernétique';
+					   stats: { (#CHARISME -> 10) } asDictionary;
+					   yourself).
+				  (AlderabanResponse new
+					   text:
+						   'Vous vous saisissez de la cellule à fusion et remontez l''allée en esquivant clients, vendeur, vigiles et tir photonique des tourelles Anillator MK2 sortie soudainement du plafond dès lors que l''alarme se mit en route.';
+					   stats: { (#CHARISME -> 10) } asDictionary;
+					   yourself).
+				  (AlderabanResponse new
+					   text:
+						   'Vous remarquez que le premier chiffre du prix affiché avait été rajouté au stylo. Vous grattez alors celui- ci et finissez par payer le juste prix de la cellule.';
+					   stats: { (#RESISTANCE -> 10) } asDictionary;
+					   yourself).
+				  (AlderabanResponse new
+					   text:
+						   'Vous ensorcelez le vendeur qui en plus de vous raccompagner jusqu''à la sortie en vous offrant le pack de cellule, fait un détour par le coffre et vous laisse vous servir en bastos.';
+					   stats: { (#INTELLIGENCE -> 10) } asDictionary;
 					   yourself) };
 		  yourself
 ]

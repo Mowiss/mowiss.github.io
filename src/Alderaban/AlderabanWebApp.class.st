@@ -61,17 +61,26 @@ AlderabanWebApp >> renderNextQuestion [
 { #category : #'initialize-release' }
 AlderabanWebApp >> renderPerso [
 
-	| p ul card |
+	| p ul card title stats |
+	
+	title := self addElement: 'h1' to: self cardRoot.
+	self cssClassesElement: title set: { 'card-header' }.
+	title innerHTML: 'Ficher Personnage'.
 	card := self addElement: 'div' to: self cardRoot.
 	self cssClassesElement: card set: { 'card-body' }.
+
 	p := self addElement: 'p' to: card.
 	p innerHTML: 'Ton personnage est de la race: ' , character raceName.
-	p := self addElement: 'p' to: card.
-	p innerHTML: 'Test stats sont:'.
-	ul := self addElement: 'ul' to: card.
+	stats := self addElement: 'h2' to: card.
+	stats innerHTML: 'Stats'.
+	
+	ul := self addElement: 'ul' to: self cardRoot.
+	self cssClassesElement: ul set: { 'list-group'. 'list-group-flush' }.
 	character stats keysAndValuesDo: [ :key :value | 
 		| li |
 		li := self addElement: 'li' to: ul.
+		
+		self cssClassesElement: li set: { 'list-group-item'. 'list-group-item-dark' }.
 		li innerHTML: key , ' : ' , value ]
 ]
 
