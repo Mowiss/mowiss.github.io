@@ -38,3 +38,10 @@ jobs:
           # A file, directory or wildcard pattern that describes what to upload
           path: HTML/Aldebaran/AldebaranWebApp/
           # The desired behavior if no files are found using the provided path.
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v1.0.8
+        with:
+          # Path of the directory containing the static assets.
+          path: HTML/Aldebaran/
+          # Duration after which artifact will expire in days.
+          retention-days: 1 
