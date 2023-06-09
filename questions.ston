@@ -1,6 +1,6 @@
 OrderedCollection [
 	AldebaranQuestion {
-		#prompt : 'Veuillez sélectionner une race pour votre personnage.',
+		#prompt : 'Veuillez sélectionner une race pour votre personnage:',
 		#responses : [
 			ReponseTypeRace {
 				#text : 'Un humain',
